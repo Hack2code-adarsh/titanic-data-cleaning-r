@@ -1,0 +1,15 @@
+﻿# R session artifacts
+.Rhistory
+.RData
+.Rapp.history
+.Rproj.user/
+*.Rproj
+
+# OS / editor temp files
+*.tmp
+~$*
+Thumbs.db
+desktop.ini
+
+# Word lock files
+~$*.docx

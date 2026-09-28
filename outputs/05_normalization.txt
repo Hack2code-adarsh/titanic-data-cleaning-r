@@ -1,0 +1,21 @@
+==============================================================
+SECTION 5: NORMALIZATION / FEATURE SCALING
+==============================================================
+
+Created scaled features:
+  Age_minmax, Fare_minmax  (Min-Max normalization, range [0,1])
+  Age_z, Fare_z            (Standard / Z-score scaling, mean 0 sd 1)
+
+----- Comparison: original vs Min-Max vs Z-score -----
+ Feature   Method    Mean      SD     Min      Max
+     Age Original 29.1124 13.3044  0.4200  80.0000
+     Age  Min-Max  0.3606  0.1672  0.0000   1.0000
+     Age  Z-score  0.0000  1.0000 -2.1566   3.8249
+    Fare Original 31.2248 42.5241  0.0000 249.0062
+    Fare  Min-Max  0.1254  0.1708  0.0000   1.0000
+    Fare  Z-score  0.0000  1.0000 -0.7343   5.1214
+
+----- Rationale -----
+Min-Max preserves the original distribution shape within [0,1] - useful for
+distance-based algorithms. Z-score handles features with large spread and
+outliers better by centering at mean 0, sd 1. Both retained for flexibility.

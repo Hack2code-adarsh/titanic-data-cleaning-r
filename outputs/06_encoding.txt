@@ -1,0 +1,30 @@
+==============================================================
+SECTION 6: ENCODING CATEGORICAL VARIABLES
+==============================================================
+
+Categorical variables to encode: Survived, Pclass, Sex, Embarked, HasCabin
+
+Sex -> Sex_code (label): male=1, female=0
+Embarked -> one-hot: Embarked_C, Embarked_Q, Embarked_S 
+Pclass -> one-hot : Pclass_Class1, Pclass_Class2, Pclass_Class3 
+HasCabin -> HasCabin_code: Yes=1, No=0
+
+----- First 6 rows of encoded numeric columns -----
+  Sex_code Embarked_C Embarked_Q Embarked_S Pclass_Class1 Pclass_Class2 Pclass_Class3 HasCabin_code
+1        1          0          0          1             0             0             1             0
+2        0          1          0          0             1             0             0             1
+3        0          0          0          1             0             0             1             0
+4        0          0          0          1             1             0             0             1
+5        1          0          0          1             0             0             1             0
+6        1          0          1          0             0             0             1             0
+
+----- Confirm encoded columns are numeric -----
+     Sex_code    Embarked_C    Embarked_Q    Embarked_S Pclass_Class1 Pclass_Class2 Pclass_Class3 
+    "numeric"     "numeric"     "numeric"     "numeric"     "numeric"     "numeric"     "numeric" 
+HasCabin_code 
+    "numeric" 
+
+----- Encoding summary -----
+Label encoding used for binary categoricals (Sex, HasCabin).
+One-hot encoding used for nominal categoricals with >2 levels (Embarked, Pclass)
+to avoid implying a false ordinal relationship.

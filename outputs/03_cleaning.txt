@@ -1,0 +1,54 @@
+==============================================================
+SECTION 3: DATA CLEANING
+==============================================================
+
+Trimmed whitespace in 5 character columns.
+
+----- Missing before cleaning -----
+     Age    Cabin Embarked 
+     177      687        2 
+
+Dropped identifier columns: PassengerId, Name, Ticket
+Remaining columns: Survived, Pclass, Sex, Age, SibSp, Parch, Fare, Cabin, Embarked 
+
+Converted Survived (0/1 -> Died/Survived) and Pclass -> factor.
+Imputed Embarked with mode: S 
+Remaining NA in Embarked: 0 
+Created HasCabin flag; dropped Cabin (77% missing).
+Imputed 177 missing Age values with group median (Pclass:Sex).
+Remaining NA in Age: 0 
+True duplicate rows removed (checked on raw data with IDs): 0 
+
+----- str() after cleaning -----
+'data.frame':	891 obs. of  9 variables:
+ $ Survived: Factor w/ 2 levels "Died","Survived": 1 2 2 2 1 1 1 1 2 2 ...
+ $ Pclass  : Factor w/ 3 levels "Class1","Class2",..: 3 1 3 1 3 3 1 3 3 2 ...
+ $ Sex     : chr  "male" "female" "female" "female" ...
+ $ Age     : num  22 38 26 35 35 25 54 2 27 14 ...
+ $ SibSp   : int  1 1 0 1 0 0 0 3 0 1 ...
+ $ Parch   : int  0 0 0 0 0 0 0 1 2 0 ...
+ $ Fare    : num  7.25 71.28 7.92 53.1 8.05 ...
+ $ Embarked: chr  "S" "C" "S" "S" ...
+ $ HasCabin: Factor w/ 2 levels "No","Yes": 1 2 1 2 1 1 2 1 1 1 ...
+
+----- summary() after cleaning -----
+     Survived      Pclass           Sex           Age            SibSp           Parch            Fare       
+ Died    :549   Class1:216   Length   :891   Min.   : 0.42   Min.   :0.000   Min.   :0.000   Min.   :  0.00  
+ Survived:342   Class2:184   N.unique :  2   1st Qu.:21.50   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:  7.91  
+                Class3:491   N.blank  :  0   Median :26.00   Median :0.000   Median :0.000   Median : 14.45  
+                             Min.nchar:  4   Mean   :29.11   Mean   :0.523   Mean   :0.382   Mean   : 32.20  
+                             Max.nchar:  6   3rd Qu.:36.00   3rd Qu.:1.000   3rd Qu.:0.000   3rd Qu.: 31.00  
+                                             Max.   :80.00   Max.   :8.000   Max.   :6.000   Max.   :512.33  
+      Embarked   HasCabin 
+ Length   :891   No :687  
+ N.unique :  3   Yes:204  
+ N.blank  :  0            
+ Min.nchar:  1            
+ Max.nchar:  1            
+                          
+
+----- Missing after cleaning (should all be 0) -----
+Survived   Pclass      Sex      Age    SibSp    Parch     Fare Embarked HasCabin 
+       0        0        0        0        0        0        0        0        0 
+
+Final dimensions: 891 rows x 9 cols

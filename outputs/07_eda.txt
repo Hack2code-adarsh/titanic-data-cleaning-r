@@ -1,0 +1,85 @@
+==============================================================
+SECTION 7: EXPLORATORY DATA ANALYSIS
+==============================================================
+
+----- 7.1 Overall survival rate -----
+
+    Died Survived 
+     549      342 
+Survival % : 38.38 
+
+----- 7.2 Survival by Sex -----
+        
+         Died Survived
+  female   81      233
+  male    468      109
+
+Row-wise % (survival rate within each Sex):
+        
+          Died Survived
+  female 25.80    74.20
+  male   81.11    18.89
+
+----- 7.3 Survival by Pclass -----
+        
+         Died Survived
+  Class1   80      136
+  Class2   97       87
+  Class3  372      119
+
+Row-wise % (survival rate within each Pclass):
+        
+          Died Survived
+  Class1 37.04    62.96
+  Class2 52.72    47.28
+  Class3 75.76    24.24
+
+----- 7.4 Survival by Embarked port -----
+   
+    Died Survived
+  C   75       93
+  Q   47       30
+  S  427      219
+
+Row-wise %:
+   
+     Died Survived
+  C 44.64    55.36
+  Q 61.04    38.96
+  S 66.10    33.90
+
+----- 7.5 Descriptive statistics: numeric variables -----
+      Age            SibSp           Parch            Fare       
+ Min.   : 0.42   Min.   :0.000   Min.   :0.000   Min.   :  0.00  
+ 1st Qu.:21.50   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:  7.91  
+ Median :26.00   Median :0.000   Median :0.000   Median : 14.45  
+ Mean   :29.11   Mean   :0.523   Mean   :0.382   Mean   : 31.22  
+ 3rd Qu.:36.00   3rd Qu.:1.000   3rd Qu.:0.000   3rd Qu.: 31.00  
+ Max.   :80.00   Max.   :8.000   Max.   :6.000   Max.   :249.01  
+
+----- 7.6 Correlation matrix (numeric variables) -----
+                 Age  SibSp  Parch   Fare Sex_code Pclass_Class1 Pclass_Class3 HasCabin_code
+Age            1.000 -0.250 -0.176  0.134    0.103         0.390        -0.359         0.277
+SibSp         -0.250  1.000  0.415  0.193   -0.115        -0.055         0.093        -0.040
+Parch         -0.176  0.415  1.000  0.249   -0.245        -0.018         0.016         0.037
+Fare           0.134  0.193  0.249  1.000   -0.212         0.651        -0.457         0.538
+Sex_code       0.103 -0.115 -0.245 -0.212    1.000        -0.098         0.137        -0.140
+Pclass_Class1  0.390 -0.055 -0.018  0.651   -0.098         1.000        -0.627         0.789
+Pclass_Class3 -0.359  0.093  0.016 -0.457    0.137        -0.627         1.000        -0.539
+HasCabin_code  0.277 -0.040  0.037  0.538   -0.140         0.789        -0.539         1.000
+
+----- 7.7 Key correlations with Survived (encoded 0/1) -----
+     Sex_code Pclass_Class3 HasCabin_code Pclass_Class1          Fare         Parch           Age 
+       -0.543        -0.322         0.317         0.286         0.273         0.082        -0.060 
+        SibSp 
+       -0.035 
+
+----- 7.8 Initial insights -----
+1. Sex is the strongest predictor of survival: ~74% of females survived vs ~19% of males.
+2. Pclass shows a clear gradient: Class1 ~62%, Class2 ~47%, Class3 ~24% survival.
+3. Passengers embarking at Cherbourg (C) had the highest survival rate (~55%),
+   largely because a higher proportion travelled in Class 1.
+4. Fare is positively correlated with survival; Age is weakly correlated.
+5. HasCabin (proxy for Class 1/2) correlates positively with survival.
+6. Family size (SibSp + Parch): travelling alone or with very large families
+   both reduced survival odds - a useful engineered feature for later modelling.

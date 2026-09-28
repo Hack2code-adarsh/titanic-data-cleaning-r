@@ -1,0 +1,85 @@
+==============================================================
+SECTION 1: INITIAL EXPLORATION OF RAW DATA
+==============================================================
+
+Dataset loaded from data/titanic.csv
+
+----- dim() : dataset dimensions -----
+[1] 891  12
+
+----- names() : variable names -----
+ [1] "PassengerId" "Survived"    "Pclass"      "Name"        "Sex"         "Age"         "SibSp"      
+ [8] "Parch"       "Ticket"      "Fare"        "Cabin"       "Embarked"   
+
+----- str() : structure of each variable -----
+'data.frame':	891 obs. of  12 variables:
+ $ PassengerId: int  1 2 3 4 5 6 7 8 9 10 ...
+ $ Survived   : int  0 1 1 1 0 0 0 0 1 1 ...
+ $ Pclass     : int  3 1 3 1 3 3 1 3 3 2 ...
+ $ Name       : chr  "Braund, Mr. Owen Harris" "Cumings, Mrs. John Bradley (Florence Briggs Thayer)" "Heikkinen, Miss. Laina" "Futrelle, Mrs. Jacques Heath (Lily May Peel)" ...
+ $ Sex        : chr  "male" "female" "female" "female" ...
+ $ Age        : num  22 38 26 35 35 NA 54 2 27 14 ...
+ $ SibSp      : int  1 1 0 1 0 0 0 3 0 1 ...
+ $ Parch      : int  0 0 0 0 0 0 0 1 2 0 ...
+ $ Ticket     : chr  "A/5 21171" "PC 17599" "STON/O2. 3101282" "113803" ...
+ $ Fare       : num  7.25 71.28 7.92 53.1 8.05 ...
+ $ Cabin      : chr  NA "C85" NA "C123" ...
+ $ Embarked   : chr  "S" "C" "S" "S" ...
+
+----- head() : first 6 rows -----
+  PassengerId Survived Pclass                                                Name    Sex Age SibSp Parch
+1           1        0      3                             Braund, Mr. Owen Harris   male  22     1     0
+2           2        1      1 Cumings, Mrs. John Bradley (Florence Briggs Thayer) female  38     1     0
+3           3        1      3                              Heikkinen, Miss. Laina female  26     0     0
+4           4        1      1        Futrelle, Mrs. Jacques Heath (Lily May Peel) female  35     1     0
+5           5        0      3                            Allen, Mr. William Henry   male  35     0     0
+6           6        0      3                                    Moran, Mr. James   male  NA     0     0
+            Ticket    Fare Cabin Embarked
+1        A/5 21171  7.2500  <NA>        S
+2         PC 17599 71.2833   C85        C
+3 STON/O2. 3101282  7.9250  <NA>        S
+4           113803 53.1000  C123        S
+5           373450  8.0500  <NA>        S
+6           330877  8.4583  <NA>        Q
+
+----- tail() : last 6 rows -----
+    PassengerId Survived Pclass                                     Name    Sex Age SibSp Parch     Ticket
+886         886        0      3     Rice, Mrs. William (Margaret Norton) female  39     0     5     382652
+887         887        0      2                    Montvila, Rev. Juozas   male  27     0     0     211536
+888         888        1      1             Graham, Miss. Margaret Edith female  19     0     0     112053
+889         889        0      3 Johnston, Miss. Catherine Helen "Carrie" female  NA     1     2 W./C. 6607
+890         890        1      1                    Behr, Mr. Karl Howell   male  26     0     0     111369
+891         891        0      3                      Dooley, Mr. Patrick   male  32     0     0     370376
+      Fare Cabin Embarked
+886 29.125  <NA>        Q
+887 13.000  <NA>        S
+888 30.000   B42        S
+889 23.450  <NA>        S
+890 30.000  C148        C
+891  7.750  <NA>        Q
+
+----- summary() : descriptive statistics per column -----
+  PassengerId     Survived         Pclass            Name            Sex           Age            SibSp      
+ Min.   :  1   Min.   :0.000   Min.   :1.00   Length   :891   Length   :891   Min.   : 0.42   Min.   :0.000  
+ 1st Qu.:224   1st Qu.:0.000   1st Qu.:2.00   N.unique :891   N.unique :  2   1st Qu.:20.12   1st Qu.:0.000  
+ Median :446   Median :0.000   Median :3.00   N.blank  :  0   N.blank  :  0   Median :28.00   Median :0.000  
+ Mean   :446   Mean   :0.384   Mean   :2.31   Min.nchar: 12   Min.nchar:  4   Mean   :29.70   Mean   :0.523  
+ 3rd Qu.:668   3rd Qu.:1.000   3rd Qu.:3.00   Max.nchar: 82   Max.nchar:  6   3rd Qu.:38.00   3rd Qu.:1.000  
+ Max.   :891   Max.   :1.000   Max.   :3.00                                   Max.   :80.00   Max.   :8.000  
+                                                                              NAs    :177                    
+     Parch             Ticket         Fare              Cabin          Embarked  
+ Min.   :0.000   Length   :891   Min.   :  0.00   Length   :891   Length   :891  
+ 1st Qu.:0.000   N.unique :681   1st Qu.:  7.91   N.unique :147   N.unique :  3  
+ Median :0.000   N.blank  :  0   Median : 14.45   N.blank  :  0   N.blank  :  0  
+ Mean   :0.382   Min.nchar:  3   Mean   : 32.20   Min.nchar:  1   Min.nchar:  1  
+ 3rd Qu.:0.000   Max.nchar: 18   3rd Qu.: 31.00   Max.nchar: 15   Max.nchar:  1  
+ Max.   :6.000                   Max.   :512.33   NAs      :687   NAs      :  2  
+                                                                                 
+
+----- Variable type breakdown -----
+type_table
+character   integer   numeric 
+        5         5         2 
+
+Numeric variables : 7 
+Character variables: 5 

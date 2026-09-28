@@ -1,0 +1,31 @@
+==============================================================
+SECTION 2: MISSING VALUE ANALYSIS
+==============================================================
+
+----- Missing values per variable -----
+               Variable Missing Percent
+PassengerId PassengerId       0    0.00
+Survived       Survived       0    0.00
+Pclass           Pclass       0    0.00
+Name               Name       0    0.00
+Sex                 Sex       0    0.00
+Age                 Age     177   19.87
+SibSp             SibSp       0    0.00
+Parch             Parch       0    0.00
+Ticket           Ticket       0    0.00
+Fare               Fare       0    0.00
+Cabin             Cabin     687   77.10
+Embarked       Embarked       2    0.22
+
+----- Total cells missing -----
+Missing cells     : 866 
+Total data cells  : 10692 
+Overall missing % : 8.1 
+
+----- Rows with at least one missing value -----
+Rows affected: 708 of 891 ( 79.46 % )
+
+----- Strategy decided -----
+Age      : 177 NA (~20%) -> median imputation grouped by Pclass & Sex
+Cabin    : 687 NA (~77%) -> drop column; create binary HasCabin flag
+Embarked : 2 NA (~0.2%)  -> mode imputation
